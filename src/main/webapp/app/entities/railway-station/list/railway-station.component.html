@@ -1,0 +1,115 @@
+<div>
+  <h2 id="page-heading" data-cy="RailwayStationHeading">
+    <span>Railway Stations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-railway-station"
+        [routerLink]="['/railway-station/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Railway Station </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="railwayStations?.length === 0">
+    <span>No Railway Stations found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="railwayStations && railwayStations.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="railwayStationName">
+            <div class="d-flex">
+              <span>Railway Station Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="idRailwayType.id">
+            <div class="d-flex">
+              <span>Id Railway Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="idAddress.id">
+            <div class="d-flex">
+              <span>Id Address</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody
+        infinite-scroll
+        (scrolled)="loadPage(page + 1)"
+        [infiniteScrollDisabled]="page - 1 >= links['last']"
+        [infiniteScrollDistance]="0"
+      >
+        <tr *ngFor="let railwayStation of railwayStations; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/railway-station', railwayStation.id, 'view']">{{ railwayStation.id }}</a>
+          </td>
+          <td>{{ railwayStation.railwayStationName }}</td>
+          <td>
+            <div *ngIf="railwayStation.idRailwayType">
+              <a [routerLink]="['/railway-type', railwayStation.idRailwayType.id, 'view']">{{ railwayStation.idRailwayType.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="railwayStation.idAddress">
+              <a [routerLink]="['/address', railwayStation.idAddress.id, 'view']">{{ railwayStation.idAddress.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/railway-station', railwayStation.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/railway-station', railwayStation.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(railwayStation)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

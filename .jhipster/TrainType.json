@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230129195632",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "train_type",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TrainType",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "train",
+      "otherEntityRelationshipName": "idTrainType",
+      "relationshipName": "train",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

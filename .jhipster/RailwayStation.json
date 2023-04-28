@@ -1,0 +1,53 @@
+{
+  "applications": "*",
+  "changelogDate": "20230129195638",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "railway_station",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "railwayStationName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "RailwayStation",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "journey",
+      "otherEntityRelationshipName": "idRailwayStationDeparture",
+      "relationshipName": "idJourneyDeparture",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "journey",
+      "otherEntityRelationshipName": "idRailwayStationArrival",
+      "relationshipName": "idJourneyArrival",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "railwayType",
+      "otherEntityRelationshipName": "railwayStation",
+      "relationshipName": "idRailwayType",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "railwayStation",
+      "relationshipName": "idAddress",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

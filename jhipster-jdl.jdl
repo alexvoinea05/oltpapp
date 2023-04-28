@@ -1,0 +1,155 @@
+
+entity License {
+	@Id id Long,
+    licenseNumber Long required,
+    licenseDescription String
+}
+
+entity Company {
+	@Id id Long,
+    name String required,
+    identificationNumber String required
+}
+
+entity CompanyXLicense{
+}
+
+entity JourneyStatus{
+	@Id id Long,
+    code String required,
+    description String
+}
+
+entity IncidentStatus{
+	@Id id Long,
+    code String required,
+    description String
+}
+
+entity UserType{
+	@Id id Long,
+    code String required,
+    discount Double required
+}
+
+entity TrainType{
+	@Id id Long,
+    code String required,
+    description String
+}
+
+entity FuelType{
+	@Id id Long,
+    code String required,
+    description String
+}
+
+entity RailwayType{
+	@Id id Long,
+    code String required,
+    description String
+}
+
+entity District{
+	@Id id Long,
+    name String
+}
+
+entity City{
+	@Id id Long,
+    name String
+}
+
+entity Address{
+	@Id id Long,
+    streetNumber String,
+    street String,
+    zipcode String
+}
+
+entity RailwayStation{
+	@Id id Long,
+    railwayStationName String required
+}
+
+entity Train{
+	@Id id Long,
+    code String required,
+    numberOfSeats Long required
+}
+
+entity AppUser{
+	@Id idUser Long,
+    email String required,
+    password String required,
+    balance Double,
+    lastName String required,
+    firstName String required
+}
+
+entity Journey{
+	@Id id Long,
+    distance Double required,
+	journeyDuration Double required,
+	actualDepartureTime ZonedDateTime,
+	plannedDepartureTime ZonedDateTime required,
+	actualArrivalTime ZonedDateTime,
+	plannedArrivalTime ZonedDateTime required,
+	ticketPrice Double required,
+	numberOfStops Integer,
+	timeOfStops Double required,
+	minutesLate Double required
+}
+
+entity Incident{
+	@Id id Long,
+    description String required,
+    time ZonedDateTime required
+}
+
+entity Ticket{
+	@Id id Long,
+    finalPrice Double required,
+    quantity Integer required,
+	time ZonedDateTime required
+}
+
+
+
+relationship OneToMany {
+	District to City{idDistrict},
+	City to Address{idCity},
+	RailwayType to RailwayStation{idRailwayType},
+	Address to RailwayStation{idAddress},
+	FuelType to Train{idFuelType},
+    TrainType to Train{idTrainType},
+    UserType to AppUser{idUserType},
+    JourneyStatus to Journey{idJourneyStatus},
+    Train to Journey{idTrain},
+    Company to Journey{idCompany},
+    RailwayStation{idJourneyDeparture} to Journey{idRailwayStationDeparture},
+    RailwayStation{idJourneyArrival} to Journey{idRailwayStationArrival},
+    IncidentStatus to Incident{idIncidentStatus},
+    AppUser to Incident{idAppUser},
+    Journey to Incident{idJourney},
+    AppUser to Ticket{idAppUser},
+    Journey to Ticket{idJourney},
+    Company to CompanyXLicense{idCompany},
+    License to CompanyXLicense{idLicense}
+}
+
+relationship OneToOne {
+	UserDw{user} to User{userDw}
+}
+
+// Set pagination options
+paginate all with infinite-scroll
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

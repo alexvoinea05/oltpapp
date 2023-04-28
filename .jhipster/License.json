@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230129195626",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "license",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "licenseNumber",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "licenseDescription",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "License",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "companyXLicense",
+      "otherEntityRelationshipName": "idLicense",
+      "relationshipName": "companyXLicense",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

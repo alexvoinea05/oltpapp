@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="appUser">
+      <h2 data-cy="appUserDetailsHeading"><span>App User</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id User</span></dt>
+        <dd>
+          <span>{{ appUser.idUser }}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+          <span>{{ appUser.email }}</span>
+        </dd>
+        <dt><span>Password</span></dt>
+        <dd>
+          <span>{{ appUser.password }}</span>
+        </dd>
+        <dt><span>Balance</span></dt>
+        <dd>
+          <span>{{ appUser.balance }}</span>
+        </dd>
+        <dt><span>Last Name</span></dt>
+        <dd>
+          <span>{{ appUser.lastName }}</span>
+        </dd>
+        <dt><span>First Name</span></dt>
+        <dd>
+          <span>{{ appUser.firstName }}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+          <span>{{ appUser.user?.id }}</span>
+        </dd>
+        <dt><span>Id User Type</span></dt>
+        <dd>
+          <div *ngIf="appUser.idUserType">
+            <a [routerLink]="['/user-type', appUser.idUserType.id, 'view']">{{ appUser.idUserType.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/app-user', appUser.idUser, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

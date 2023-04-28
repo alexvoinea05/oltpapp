@@ -1,0 +1,113 @@
+{
+  "applications": "*",
+  "changelogDate": "20230129195641",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "journey",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "distance",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "journeyDuration",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "actualDepartureTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "plannedDepartureTime",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "actualArrivalTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "plannedArrivalTime",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ticketPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numberOfStops",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "timeOfStops",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "minutesLate",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Journey",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "incident",
+      "otherEntityRelationshipName": "idJourney",
+      "relationshipName": "incident",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "ticket",
+      "otherEntityRelationshipName": "idJourney",
+      "relationshipName": "ticket",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "journeyStatus",
+      "otherEntityRelationshipName": "journey",
+      "relationshipName": "idJourneyStatus",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "train",
+      "otherEntityRelationshipName": "journey",
+      "relationshipName": "idTrain",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "journey",
+      "relationshipName": "idCompany",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "railwayStation",
+      "otherEntityRelationshipName": "idJourneyDeparture",
+      "relationshipName": "idRailwayStationDeparture",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "railwayStation",
+      "otherEntityRelationshipName": "idJourneyArrival",
+      "relationshipName": "idRailwayStationArrival",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

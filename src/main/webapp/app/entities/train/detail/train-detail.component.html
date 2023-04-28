@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="train">
+      <h2 data-cy="trainDetailsHeading"><span>Train</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ train.id }}</span>
+        </dd>
+        <dt><span>Code</span></dt>
+        <dd>
+          <span>{{ train.code }}</span>
+        </dd>
+        <dt><span>Number Of Seats</span></dt>
+        <dd>
+          <span>{{ train.numberOfSeats }}</span>
+        </dd>
+        <dt><span>Id Fuel Type</span></dt>
+        <dd>
+          <div *ngIf="train.idFuelType">
+            <a [routerLink]="['/fuel-type', train.idFuelType.id, 'view']">{{ train.idFuelType.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Id Train Type</span></dt>
+        <dd>
+          <div *ngIf="train.idTrainType">
+            <a [routerLink]="['/train-type', train.idTrainType.id, 'view']">{{ train.idTrainType.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/train', train.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

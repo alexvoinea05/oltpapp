@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="journey">
+      <h2 data-cy="journeyDetailsHeading"><span>Journey</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ journey.id }}</span>
+        </dd>
+        <dt><span>Distance</span></dt>
+        <dd>
+          <span>{{ journey.distance }}</span>
+        </dd>
+        <dt><span>Journey Duration</span></dt>
+        <dd>
+          <span>{{ journey.journeyDuration }}</span>
+        </dd>
+        <dt><span>Actual Departure Time</span></dt>
+        <dd>
+          <span>{{ journey.actualDepartureTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Planned Departure Time</span></dt>
+        <dd>
+          <span>{{ journey.plannedDepartureTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Actual Arrival Time</span></dt>
+        <dd>
+          <span>{{ journey.actualArrivalTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Planned Arrival Time</span></dt>
+        <dd>
+          <span>{{ journey.plannedArrivalTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Ticket Price</span></dt>
+        <dd>
+          <span>{{ journey.ticketPrice }}</span>
+        </dd>
+        <dt><span>Number Of Stops</span></dt>
+        <dd>
+          <span>{{ journey.numberOfStops }}</span>
+        </dd>
+        <dt><span>Time Of Stops</span></dt>
+        <dd>
+          <span>{{ journey.timeOfStops }}</span>
+        </dd>
+        <dt><span>Minutes Late</span></dt>
+        <dd>
+          <span>{{ journey.minutesLate }}</span>
+        </dd>
+        <dt><span>Id Journey Status</span></dt>
+        <dd>
+          <div *ngIf="journey.idJourneyStatus">
+            <a [routerLink]="['/journey-status', journey.idJourneyStatus.id, 'view']">{{ journey.idJourneyStatus.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Id Train</span></dt>
+        <dd>
+          <div *ngIf="journey.idTrain">
+            <a [routerLink]="['/train', journey.idTrain.id, 'view']">{{ journey.idTrain.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Id Company</span></dt>
+        <dd>
+          <div *ngIf="journey.idCompany">
+            <a [routerLink]="['/company', journey.idCompany.id, 'view']">{{ journey.idCompany.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Id Railway Station Departure</span></dt>
+        <dd>
+          <div *ngIf="journey.idRailwayStationDeparture">
+            <a [routerLink]="['/railway-station', journey.idRailwayStationDeparture.id, 'view']">{{
+              journey.idRailwayStationDeparture.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span>Id Railway Station Arrival</span></dt>
+        <dd>
+          <div *ngIf="journey.idRailwayStationArrival">
+            <a [routerLink]="['/railway-station', journey.idRailwayStationArrival.id, 'view']">{{ journey.idRailwayStationArrival.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/journey', journey.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

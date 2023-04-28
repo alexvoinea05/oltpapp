@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Journey.
+    -->
+    <changeSet id="20230129195641-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="id_journey_status_id"
+                                 baseTableName="journey"
+                                 constraintName="fk_journey__id_journey_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="journey_status"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_train_id"
+                                 baseTableName="journey"
+                                 constraintName="fk_journey__id_train_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="train"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_company_id"
+                                 baseTableName="journey"
+                                 constraintName="fk_journey__id_company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_railway_station_departure_id"
+                                 baseTableName="journey"
+                                 constraintName="fk_journey__id_railway_station_departure_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="railway_station"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_railway_station_arrival_id"
+                                 baseTableName="journey"
+                                 constraintName="fk_journey__id_railway_station_arrival_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="railway_station"/>
+    </changeSet>
+</databaseChangeLog>

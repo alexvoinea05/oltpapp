@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20230129195642",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "incident",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "time",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Incident",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "incidentStatus",
+      "otherEntityRelationshipName": "incident",
+      "relationshipName": "idIncidentStatus",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "incident",
+      "relationshipName": "idAppUser",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "journey",
+      "otherEntityRelationshipName": "incident",
+      "relationshipName": "idJourney",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

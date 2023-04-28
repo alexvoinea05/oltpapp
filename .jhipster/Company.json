@@ -1,0 +1,46 @@
+{
+  "applications": "*",
+  "changelogDate": "20230129195627",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "company",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "identificationNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Company",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "journey",
+      "otherEntityRelationshipName": "idCompany",
+      "relationshipName": "journey",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "companyXLicense",
+      "otherEntityRelationshipName": "idCompany",
+      "relationshipName": "companyXLicense",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

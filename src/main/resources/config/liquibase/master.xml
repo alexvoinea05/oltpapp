@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="floatType" value="float" dbms="oracle"/>
+    <property name="clobType" value="clob" dbms="oracle"/>
+    <property name="blobType" value="blob" dbms="oracle"/>
+    <property name="uuidType" value="uuid" dbms="oracle"/>
+    <property name="datetimeType" value="datetime" dbms="oracle"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195626_added_entity_License.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195627_added_entity_Company.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195628_added_entity_CompanyXLicense.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195629_added_entity_JourneyStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195630_added_entity_IncidentStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195631_added_entity_UserType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195632_added_entity_TrainType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195633_added_entity_FuelType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195634_added_entity_RailwayType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195635_added_entity_District.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195636_added_entity_City.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195637_added_entity_Address.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195638_added_entity_RailwayStation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195639_added_entity_Train.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195640_added_entity_AppUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195641_added_entity_Journey.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195642_added_entity_Incident.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195643_added_entity_Ticket.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20230129195628_added_entity_constraints_CompanyXLicense.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195636_added_entity_constraints_City.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195637_added_entity_constraints_Address.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195638_added_entity_constraints_RailwayStation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195639_added_entity_constraints_Train.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195640_added_entity_constraints_AppUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195641_added_entity_constraints_Journey.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195642_added_entity_constraints_Incident.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230129195643_added_entity_constraints_Ticket.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>

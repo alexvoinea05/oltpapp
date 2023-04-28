@@ -1,0 +1,40 @@
+{
+  "applications": "*",
+  "changelogDate": "20230129195636",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "city",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "City",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "idCity",
+      "relationshipName": "address",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "district",
+      "otherEntityRelationshipName": "city",
+      "relationshipName": "idDistrict",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

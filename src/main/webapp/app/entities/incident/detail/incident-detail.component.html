@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="incident">
+      <h2 data-cy="incidentDetailsHeading"><span>Incident</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>Id</span></dt>
+        <dd>
+          <span>{{ incident.id }}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+          <span>{{ incident.description }}</span>
+        </dd>
+        <dt><span>Time</span></dt>
+        <dd>
+          <span>{{ incident.time | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span>Id Incident Status</span></dt>
+        <dd>
+          <div *ngIf="incident.idIncidentStatus">
+            <a [routerLink]="['/incident-status', incident.idIncidentStatus.id, 'view']">{{ incident.idIncidentStatus.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Id App User</span></dt>
+        <dd>
+          <div *ngIf="incident.idAppUser">
+            <a [routerLink]="['/app-user', incident.idAppUser.idUser, 'view']">{{ incident.idAppUser.idUser }}</a>
+          </div>
+        </dd>
+        <dt><span>Id Journey</span></dt>
+        <dd>
+          <div *ngIf="incident.idJourney">
+            <a [routerLink]="['/journey', incident.idJourney.id, 'view']">{{ incident.idJourney.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/incident', incident.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

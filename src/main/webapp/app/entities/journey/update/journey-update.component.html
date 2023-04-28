@@ -1,0 +1,299 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-journey-heading" data-cy="JourneyCreateUpdateHeading">Create or edit a Journey</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_distance">Distance</label>
+          <input type="number" class="form-control" name="distance" id="field_distance" data-cy="distance" formControlName="distance" />
+          <div *ngIf="editForm.get('distance')!.invalid && (editForm.get('distance')!.dirty || editForm.get('distance')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('distance')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('distance')?.errors?.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_journeyDuration">Journey Duration</label>
+          <input
+            type="number"
+            class="form-control"
+            name="journeyDuration"
+            id="field_journeyDuration"
+            data-cy="journeyDuration"
+            formControlName="journeyDuration"
+          />
+          <div
+            *ngIf="
+              editForm.get('journeyDuration')!.invalid &&
+              (editForm.get('journeyDuration')!.dirty || editForm.get('journeyDuration')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('journeyDuration')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('journeyDuration')?.errors?.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_actualDepartureTime">Actual Departure Time</label>
+          <div class="d-flex">
+            <input
+              id="field_actualDepartureTime"
+              data-cy="actualDepartureTime"
+              type="datetime-local"
+              class="form-control"
+              name="actualDepartureTime"
+              formControlName="actualDepartureTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_plannedDepartureTime">Planned Departure Time</label>
+          <div class="d-flex">
+            <input
+              id="field_plannedDepartureTime"
+              data-cy="plannedDepartureTime"
+              type="datetime-local"
+              class="form-control"
+              name="plannedDepartureTime"
+              formControlName="plannedDepartureTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('plannedDepartureTime')!.invalid &&
+              (editForm.get('plannedDepartureTime')!.dirty || editForm.get('plannedDepartureTime')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('plannedDepartureTime')?.errors?.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('plannedDepartureTime')?.errors?.datetimelocal">
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_actualArrivalTime">Actual Arrival Time</label>
+          <div class="d-flex">
+            <input
+              id="field_actualArrivalTime"
+              data-cy="actualArrivalTime"
+              type="datetime-local"
+              class="form-control"
+              name="actualArrivalTime"
+              formControlName="actualArrivalTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_plannedArrivalTime">Planned Arrival Time</label>
+          <div class="d-flex">
+            <input
+              id="field_plannedArrivalTime"
+              data-cy="plannedArrivalTime"
+              type="datetime-local"
+              class="form-control"
+              name="plannedArrivalTime"
+              formControlName="plannedArrivalTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('plannedArrivalTime')!.invalid &&
+              (editForm.get('plannedArrivalTime')!.dirty || editForm.get('plannedArrivalTime')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="editForm.get('plannedArrivalTime')?.errors?.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('plannedArrivalTime')?.errors?.datetimelocal">
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_ticketPrice">Ticket Price</label>
+          <input
+            type="number"
+            class="form-control"
+            name="ticketPrice"
+            id="field_ticketPrice"
+            data-cy="ticketPrice"
+            formControlName="ticketPrice"
+          />
+          <div *ngIf="editForm.get('ticketPrice')!.invalid && (editForm.get('ticketPrice')!.dirty || editForm.get('ticketPrice')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('ticketPrice')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('ticketPrice')?.errors?.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_numberOfStops">Number Of Stops</label>
+          <input
+            type="number"
+            class="form-control"
+            name="numberOfStops"
+            id="field_numberOfStops"
+            data-cy="numberOfStops"
+            formControlName="numberOfStops"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_timeOfStops">Time Of Stops</label>
+          <input
+            type="number"
+            class="form-control"
+            name="timeOfStops"
+            id="field_timeOfStops"
+            data-cy="timeOfStops"
+            formControlName="timeOfStops"
+          />
+          <div *ngIf="editForm.get('timeOfStops')!.invalid && (editForm.get('timeOfStops')!.dirty || editForm.get('timeOfStops')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('timeOfStops')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('timeOfStops')?.errors?.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_minutesLate">Minutes Late</label>
+          <input
+            type="number"
+            class="form-control"
+            name="minutesLate"
+            id="field_minutesLate"
+            data-cy="minutesLate"
+            formControlName="minutesLate"
+          />
+          <div *ngIf="editForm.get('minutesLate')!.invalid && (editForm.get('minutesLate')!.dirty || editForm.get('minutesLate')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('minutesLate')?.errors?.required"> This field is required. </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('minutesLate')?.errors?.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_idJourneyStatus">Id Journey Status</label>
+          <select
+            class="form-control"
+            id="field_idJourneyStatus"
+            data-cy="idJourneyStatus"
+            name="idJourneyStatus"
+            formControlName="idJourneyStatus"
+            [compareWith]="compareJourneyStatus"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="journeyStatusOption" *ngFor="let journeyStatusOption of journeyStatusesSharedCollection">
+              {{ journeyStatusOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_idTrain">Id Train</label>
+          <select
+            class="form-control"
+            id="field_idTrain"
+            data-cy="idTrain"
+            name="idTrain"
+            formControlName="idTrain"
+            [compareWith]="compareTrain"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="trainOption" *ngFor="let trainOption of trainsSharedCollection">{{ trainOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_idCompany">Id Company</label>
+          <select
+            class="form-control"
+            id="field_idCompany"
+            data-cy="idCompany"
+            name="idCompany"
+            formControlName="idCompany"
+            [compareWith]="compareCompany"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="companyOption" *ngFor="let companyOption of companiesSharedCollection">{{ companyOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_idRailwayStationDeparture">Id Railway Station Departure</label>
+          <select
+            class="form-control"
+            id="field_idRailwayStationDeparture"
+            data-cy="idRailwayStationDeparture"
+            name="idRailwayStationDeparture"
+            formControlName="idRailwayStationDeparture"
+            [compareWith]="compareRailwayStation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="railwayStationOption" *ngFor="let railwayStationOption of railwayStationsSharedCollection">
+              {{ railwayStationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_idRailwayStationArrival">Id Railway Station Arrival</label>
+          <select
+            class="form-control"
+            id="field_idRailwayStationArrival"
+            data-cy="idRailwayStationArrival"
+            name="idRailwayStationArrival"
+            formControlName="idRailwayStationArrival"
+            [compareWith]="compareRailwayStation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="railwayStationOption" *ngFor="let railwayStationOption of railwayStationsSharedCollection">
+              {{ railwayStationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

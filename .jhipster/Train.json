@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20230129195639",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "train",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numberOfSeats",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Train",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "journey",
+      "otherEntityRelationshipName": "idTrain",
+      "relationshipName": "journey",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "fuelType",
+      "otherEntityRelationshipName": "train",
+      "relationshipName": "idFuelType",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "trainType",
+      "otherEntityRelationshipName": "train",
+      "relationshipName": "idTrainType",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
